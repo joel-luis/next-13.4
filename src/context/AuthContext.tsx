@@ -2,7 +2,7 @@
 
 import { createContext, ReactNode, useContext, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { setCookie } from 'nookies'
+import { destroyCookie, setCookie } from 'nookies'
 import { api } from '@/lib/api'
 
 type SignInCredentials = {
@@ -16,6 +16,7 @@ type User = {
 
 type AuthContextData = {
   signIn(credentials: SignInCredentials): Promise<void>
+  signOut(): Promise<void>
   isAuthenticated: boolean
   user?: User
 }
@@ -58,8 +59,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
+  async function signOut() {
+    destroyCookie(null, 'nextauth.token')
+    router.push('/')
+  }
+
   return (
-    <AuthContext.Provider value={{ signIn, isAuthenticated, user }}>
+    <AuthContext.Provider value={{ signIn, signOut, isAuthenticated, user }}>
       {children}
     </AuthContext.Provider>
   )

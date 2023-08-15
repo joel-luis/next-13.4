@@ -5,14 +5,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useAuth } from '@/context/AuthContext'
 
-export const regsiterSchema = z.object({
+export const regsiterUserSchema = z.object({
   password: z
     .string()
     .min(6, { message: 'A senha precisa ter no mímimo 6 caracteres' }),
   email: z.string().email({ message: 'Digite um e-mail válido' }),
 })
 
-export type ConfirmFormData = z.infer<typeof regsiterSchema>
+export type registerUserType = z.infer<typeof regsiterUserSchema>
 
 export function Form() {
   const { signIn } = useAuth()
@@ -20,16 +20,16 @@ export function Form() {
     register,
     handleSubmit,
     formState: { isSubmitting, errors },
-  } = useForm<ConfirmFormData>({
-    resolver: zodResolver(regsiterSchema),
+  } = useForm<registerUserType>({
+    resolver: zodResolver(regsiterUserSchema),
   })
 
-  async function handleRegister(data: ConfirmFormData) {
+  async function handleRegisterUser(data: registerUserType) {
     await signIn(data)
   }
 
   return (
-    <form className="space-y-6" onSubmit={handleSubmit(handleRegister)}>
+    <form className="space-y-6" onSubmit={handleSubmit(handleRegisterUser)}>
       <div>
         <label
           htmlFor="email"
