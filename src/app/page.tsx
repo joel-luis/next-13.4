@@ -3,9 +3,10 @@ import { Form } from '@/components/Form'
 import { Icons } from '@/components/Icons'
 
 export default function Home() {
+  console.log('My home is rendering on the server 🚀🚀🚀')
   return (
     <>
-      <div className="h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="h-screen flex flex-col justify-center fa py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <Image
             className="mx-auto h-12 w-auto"

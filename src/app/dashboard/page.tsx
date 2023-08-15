@@ -6,12 +6,12 @@ export default function Dashboard() {
   const { user, isAuthenticated, signOut } = useAuth()
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center text-center py-12 sm:px-6 lg:px-8">
-      <h1 className="text-3xl text-gray-900">Dashboard</h1>
-      <h2 className="text-md text-gray-800">
+    <div className="h-screen flex flex-col justify-center items-center text-center py-12 space-y-2 sm:px-6 lg:px-8">
+      <h1 className="text-3xl">Dashboard</h1>
+      <h2 className="text-md">
         {`User is authenticated: ${isAuthenticated} `}
       </h2>
-      <h2 className="text-md text-gray-800">{user?.email}</h2>
+      <h2 className="text-md">{user?.email}</h2>
 
       <button
         type="button"
