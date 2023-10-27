@@ -5,6 +5,8 @@ import { useAuth } from '@/context/AuthContext'
 export default function Dashboard() {
   const { user, isAuthenticated, signOut } = useAuth()
 
+  console.log(user, 'user')
+
   return (
     <div className="h-screen flex flex-col justify-center items-center text-center py-12 space-y-2 sm:px-6 lg:px-8">
       <h1 className="text-3xl">Dashboard</h1>

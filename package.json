@@ -30,7 +30,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@rocketseat/eslint-config": "^2.1.0",
+    "@joel-luis/eslint-config": "^0.1.11",
     "@types/jsonwebtoken": "^9.0.2",
     "prisma": "^5.1.1"
   }
